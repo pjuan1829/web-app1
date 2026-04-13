@@ -2,8 +2,8 @@
 
 ## 📚 Índice
 
-- [Catalogo de Procedimientos](docs/actions_catalogo.md)
-- [1. Instalación](docs/install.md)
+- [Catalogo de Procedimientos](#)
+- [1. Instalación](#)
   - [1.1 Configuración de ecosystem](docs/ecosystem.example.md)
   - [1.2 Configuración de ecosystem para only developers](docs/ecosystem.example.dev.md)
 - [3. Endpoints de Inicio de Sesión](docs/endpoints/endpoints_login.md)
@@ -15,7 +15,7 @@
 
 - **Nombre del API**: API de Aplicaciones (backend)
 - **Versión**: v1.0.0
-- **Responsable**: Angel R. Avila G. (angel.avila@up.ac.pa)
+- **Responsable**: Angel R. Avila G.
 - **Fecha**: 2025-06-12
 - **Descripción**: API REST para peticiones mediante un API para diferentes proyectos e incluido la solicitud de información de la base de datos.
 
@@ -32,6 +32,7 @@
 ---
 
 ## 3. Levantar el servicio
+
 ```
 docker-compose up --build
 ```
