@@ -1,11 +1,9 @@
-version: '3.9'
-
 services:
 
   db:
     image: mysql:8
     container_name: mysql_db
-    restart: always
+    restart: unless-stopped
     environment:
       MYSQL_ROOT_PASSWORD: root
       MYSQL_DATABASE: app_db
@@ -13,24 +11,34 @@ services:
       - "3306:3306"
     volumes:
       - db_data:/var/lib/mysql
+      - ./api/db/init.sql:/docker-entrypoint-initdb.d/init.sql:ro
 
   api:
     build: ./api
     container_name: api_service
-    restart: always
+    restart: unless-stopped
     ports:
       - "3000:3000"
     environment:
       DB_HOST: db
+      DB_PORT: 3306
+      DB_NAME: app_db
+      DB_USER: root
+      DB_PASSWORD: root
+      PORT: 3000
     depends_on:
       - db
 
   web:
     build: ./web
     container_name: django_web
-    restart: always
+    restart: unless-stopped
     ports:
       - "8000:8000"
+    environment:
+      API_BASE_URL: http://api:3000
+      DJANGO_DEBUG: "True"
+      DJANGO_ALLOWED_HOSTS: "0.0.0.0 localhost"
     depends_on:
       - api
 
